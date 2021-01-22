@@ -34,5 +34,10 @@ describe ("employee class", () => {
         });
 
     });
-   
-} )
+   describe("getName method", () => {
+    it('returns the name of the employee', () => {
+        const employee = new Employee("terry", 7, "terry@cmail.com");
+        expect(employee.getName()).toEqual("terry")
+    });
+   })
+})
