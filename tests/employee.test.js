@@ -58,4 +58,4 @@ describe ("employee class", () => {
         expect(employee.getRole()).toEqual("Employee");
         });
     });
-})
+});
