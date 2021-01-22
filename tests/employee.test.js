@@ -38,6 +38,24 @@ describe ("employee class", () => {
     it('returns the name of the employee', () => {
         const employee = new Employee("terry", 7, "terry@cmail.com");
         expect(employee.getName()).toEqual("terry")
+        });
     });
-   })
+   describe("getId method", () => {
+    it('returns the ID of the employee', () => {
+        const employee = new Employee("terry", 7, "terry@cmail.com");
+        expect(employee.getId()).toEqual(7) 
+        });
+    });
+   describe("getEmail method", () => {
+    it('returns the Email of the employee', () => {
+        const employee = new Employee("terry", 7, "terry@cmail.com");
+        expect(employee.getEmail()).toEqual("terry@cmail.com");
+        });
+    });
+    describe("getRole method", () => {
+        it('returns the role of the employee', () => {
+        const employee = new Employee("terry", 7, "terry@cmail.com");
+        expect(employee.getRole()).toEqual("Employee");
+        });
+    });
 })
