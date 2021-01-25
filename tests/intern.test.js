@@ -9,7 +9,7 @@ describe ("Intern class", () => {
             expect(terry.empName).toEqual("terry");
             expect(terry.id).toEqual(7);
             expect(terry.email).toEqual("terry@cmail.com");
-            expect(terry.school).toEqual("Strong University");
+            expect(terry.school).toEqual("Stronk University");
         });
     });
     describe('getSchool method', () => {

@@ -15,7 +15,7 @@ describe ("Manager class", () => {
     describe('getRole method', () => {
         it('Should return Manager as the role', () => {
             const terry = new Manager("terry", 7, "terry@cmail.com", 212)
-            expect(terry.getRole()).toEqual("Intern")
+            expect(terry.getRole()).toEqual("Manager")
         });
     })
 
