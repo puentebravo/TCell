@@ -5,13 +5,9 @@ const Engineer = require ("./lib/engineer")
 const Intern = require ("./lib/intern")
 const Manager = require ("./lib/manager")
 
-inquirer
-.prompt([
-        {
-            type: "input",
-            name: "teamName",
-            message: "What is your team's name?"
-        },
+const collectAnswers = async (inputs = []) => {
+
+const prompts = [
         {
             type: "list",
             name: "addRole",
@@ -56,9 +52,23 @@ inquirer
             name: "addConfirm",
             message: "Would you like to add another employee?",
             default: true
-        }
-    ])
-    .then((answers) => {
-        console.log(answers)
-        
-    })
+        },
+        {
+            type: "input",
+            name: "teamName",
+            message: "What is your team's name?",
+            when: (answers) => answers.addConfirm === false
+        },
+    ]
+    const { addConfirm, ...answers } = await
+    inquirer.prompt(prompts);
+    const newAnswers = [...inputs, answers];
+    return addConfirm ? collectAnswers(newAnswers) : newAnswers     
+    };
+
+const initialize = async () => {
+    const inputs = await collectAnswers();
+    console.log(inputs)
+}
+
+initialize();
