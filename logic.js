@@ -1,9 +1,11 @@
 const inquirer = require ("inquirer")
 const fs = require ("fs")
-const Employee = require ("./lib/employee")
-const Engineer = require ("./lib/engineer")
-const Intern = require ("./lib/intern")
-const Manager = require ("./lib/manager")
+const Employee = require ("./lib/employee.js")
+const Engineer = require ("./lib/engineer.js")
+const Intern = require ("./lib/intern.js")
+const Manager = require ("./lib/manager.js")
+const template = require ("./src/page-template.js")
+const cssTemplate = require ("./src/css-template.js")
 
 const collectAnswers = async (inputs = []) => {
 
@@ -53,22 +55,24 @@ const prompts = [
             message: "Would you like to add another employee?",
             default: true
         },
-        {
-            type: "input",
-            name: "teamName",
-            message: "What is your team's name?",
-            when: (answers) => answers.addConfirm === false
-        },
     ]
     const { addConfirm, ...answers } = await
     inquirer.prompt(prompts);
     const newAnswers = [...inputs, answers];
-    return addConfirm ? collectAnswers(newAnswers) : newAnswers     
+    return addConfirm ? collectAnswers(newAnswers) : newAnswers
     };
 
 const initialize = async () => {
     const inputs = await collectAnswers();
-    console.log(inputs)
+    console.log(inputs);
+   const content = template(inputs);
+    fs.writeFile("output/profile.html", content, (err) => {
+        err ? console.log(err) : console.log("Index created. Have a nice day.")
+    });
+    fs.writeFile("output/style.css", cssTemplate, (err) => {
+        err ? console.log(err) : console.log("Stylesheet created. Enjoy!")
+    });
+    
 }
 
 initialize();
