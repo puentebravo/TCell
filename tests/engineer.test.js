@@ -22,7 +22,7 @@ describe ("engineer class", () => {
     describe('getGitHub method', () => {
         it('returns the github account username of the stated engineer', () => {
             const terry = new Engineer("terry", 7, "terry@cmail.com", "terrytheman")
-            expect(terry.getGitHub()).toEqual("terrytheman")
+            expect(terry.getGithub()).toEqual("terrytheman")
         });
     });
 });
