@@ -5,49 +5,50 @@ const Engineer = require ("./lib/engineer.js")
 const Intern = require ("./lib/intern.js")
 const Manager = require ("./lib/manager.js")
 const template = require ("./src/page-template.js")
-const cssTemplate = require ("./src/css-template.js")
 
-const collectAnswers = async (inputs = []) => {
+let team = []
+
+const collectAnswers = async () => {
 
 const prompts = [
         {
             type: "list",
-            name: "addRole",
+            name: "Role",
             choices: ["Manager", "Engineer", "Intern"],
             message: "Which employee would you like to add?",
         },
         {
             type: "input",
-            name: "addName",
+            name: "Name",
             message: "What is this employee's name?",
         },
         {
             type: "number",
-            name: "addID",
+            name: "ID",
             message: "What is this employee's ID?"
         },
         {
             type: "input",
-            name: "addEmail",
+            name: "Email",
             message: "What is this employee's Email?"
         },
         {
             type: "input",
-            name: "addOfficeNo",
+            name: "OfficeNo",
             message: "What is this Manager's Office Number?",
-            when: (answers) => answers.addRole === "Manager"
+            when: (answers) => answers.Role === "Manager"
         },
         {
             type: "input",
-            name: "addGithub",
+            name: "Github",
             message: "What is this Engineer's Github username?",
-            when: (answers) => answers.addRole === "Engineer"
+            when: (answers) => answers.Role === "Engineer"
         },
         {
             type: "input",
-            name: "addSchool",
+            name: "School",
             message: "Which school does this intern attend?",
-            when: (answers) => answers.addRole === "Intern"
+            when: (answers) => answers.Role === "Intern"
         },
         {
             type: "confirm",
@@ -58,21 +59,44 @@ const prompts = [
     ]
     const { addConfirm, ...answers } = await
     inquirer.prompt(prompts);
-    const newAnswers = [...inputs, answers];
-    return addConfirm ? collectAnswers(newAnswers) : newAnswers
+    switch (answers.Role) {
+        case "Manager":
+            const newManager = new Manager(answers.Name, answers.ID, answers.Email, answers.OfficeNo)
+            team.push(newManager);
+            console.log(team);
+            break;
+        case "Engineer":
+            const newEngineer = new Engineer(answers.Name, answers.ID, answers.Email, answers.Github);
+            team.push(newEngineer);
+            console.log(team)
+            break;
+        case "Intern":
+            const newIntern = new Intern(answers.Name, answers.ID, answers.Email, answers.School);
+            team.push(newIntern);
+            console.log(team);
+            break;
+        default:
+            console.log("Array is still empty. Reconfigure.")
+            break;
+    }
+    return addConfirm ? collectAnswers(team) : team
     };
 
 const initialize = async () => {
     const inputs = await collectAnswers();
-    console.log(inputs);
-   const content = template(inputs);
+    console.log(inputs)
+    console.log(team)
+    //Need to create an object array or several to put stuff in here .
+   const content = template(team);
     fs.writeFile("output/profile.html", content, (err) => {
         err ? console.log(err) : console.log("Index created. Have a nice day.")
     });
+    const cssTemplate = `body {
+        background-color: rgb(48, 46, 46); 
+    }`
     fs.writeFile("output/style.css", cssTemplate, (err) => {
         err ? console.log(err) : console.log("Stylesheet created. Enjoy!")
     });
-    
 }
 
 initialize();
