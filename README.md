@@ -24,8 +24,10 @@
 ## Usage 
       
   Once installed, enter ```npm -i``` into your command line console to install Inquirer, which this application requires to work. Once this is done, run the  logic file, answer the prompts, and then copy the html file from the output folder into your project directory. 
+
+  ![sample output](./Assets/sample.png)
       
-  ![]()
+  [Walkthrough Video](hhttps://drive.google.com/file/d/1QqLvRhAWo2A6tQVcAiTBpV7cEJaXLM4B/view)
 
 ## Credits
       
