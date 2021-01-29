@@ -13,6 +13,12 @@ describe ("engineer class", () => {
             expect(terry.github).toEqual("terrytheman")
         });
     });
+    describe('getRole method', () => {
+        it('Should return Engineer as the role', () => {
+            const terry = new Engineer("terry", 7, "terry@cmail.com", "Stronk University")
+            expect(terry.getRole()).toEqual("Engineer")
+        });
+    })
     describe('getGitHub method', () => {
         it('returns the github account username of the stated engineer', () => {
             const terry = new Engineer("terry", 7, "terry@cmail.com", "terrytheman")
