@@ -90,6 +90,9 @@ const initialize = async () => {
     });
     const cssTemplate = `body {
         background-color: rgb(48, 46, 46); 
+    }
+    .card-body{
+        color: black;
     }`
     fs.writeFile("output/style.css", cssTemplate, (err) => {
         err ? console.log(err) : console.log("Stylesheet created.")
