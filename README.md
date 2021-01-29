@@ -27,7 +27,7 @@
 
   ![sample output](./Assets/sample.png)
       
-  [Walkthrough Video](hhttps://drive.google.com/file/d/1QqLvRhAWo2A6tQVcAiTBpV7cEJaXLM4B/view)
+  [Walkthrough Video](https://drive.google.com/file/d/1QqLvRhAWo2A6tQVcAiTBpV7cEJaXLM4B/view)
 
 ## Credits
       
