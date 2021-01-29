@@ -12,6 +12,12 @@ describe ("Manager class", () => {
             expect(terry.officeNo).toEqual(212);
         });
     });
+    describe('getOfficeNumber method', () => {
+        it('should return the office number of the manager', () => {
+            const sylvain = new Manager("sylvain", 7, "hanshotfirst@cmail.com", 2488);
+            expect(sylvain.getOfficeNumber()).toEqual(2488)
+        });
+    });
     describe('getRole method', () => {
         it('Should return Manager as the role', () => {
             const terry = new Manager("terry", 7, "terry@cmail.com", 212)
