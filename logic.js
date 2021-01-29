@@ -83,11 +83,8 @@ const prompts = [
     };
 
 const initialize = async () => {
-    const inputs = await collectAnswers();
-    console.log(inputs)
-    console.log(team)
-    //Need to create an object array or several to put stuff in here .
-   const content = template(team);
+    await collectAnswers();
+    const content = template(team);
     fs.writeFile("output/profile.html", content, (err) => {
         err ? console.log(err) : console.log("Index created. Have a nice day.")
     });
@@ -95,7 +92,7 @@ const initialize = async () => {
         background-color: rgb(48, 46, 46); 
     }`
     fs.writeFile("output/style.css", cssTemplate, (err) => {
-        err ? console.log(err) : console.log("Stylesheet created. Enjoy!")
+        err ? console.log(err) : console.log("Stylesheet created.")
     });
 }
 
