@@ -1,16 +1,10 @@
-const Employee = require ("../lib/employee.js")
-const Engineer = require ("../lib/engineer.js")
-const Intern = require ("../lib/intern.js")
-const Manager = require ("../lib/manager.js")
-
-
 // create the team
 const generateTeam = team => {
 
     // create the manager html
     const generateManager = manager => {
         return `
-        <div class="card employee-card">
+        <div class="card employee-card text-white bg-success">
         <div class="card-header">
             <h2 class="card-title">${manager.getName()}</h2>
             <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${manager.getRole()}</h3>
@@ -29,7 +23,7 @@ const generateTeam = team => {
     // create the html for engineers
     const generateEngineer = engineer => {
         return `
-        <div class="card employee-card">
+        <div class="card employee-card text-white bg-primary">
     <div class="card-header">
         <h2 class="card-title">${engineer.getName()}</h2>
         <h3 class="card-title"><i class="fas fa-glasses mr-2"></i>${engineer.getRole()}</h3>
@@ -48,14 +42,14 @@ const generateTeam = team => {
     // create the html for interns
     const generateIntern = intern => {
         return `
-        <div class="card employee-card">
+        <div class="card employee-card bg-light">
     <div class="card-header">
         <h2 class="card-title">${intern.getName()}</h2>
         <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>${intern.getRole()}</h3>
     </div>
     <div class="card-body">
         <ul class="list-group">
-            <li class="list-group-item">ID: {{ id }}</li>
+            <li class="list-group-item">ID: ${intern.getId()}</li>
             <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
             <li class="list-group-item">School: ${intern.getSchool()}</li>
         </ul>
@@ -107,13 +101,13 @@ module.exports = team => {
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 jumbotron mb-3 team-heading">
-                <h1 class="text-center">My Team</h1>
+            <h1 class="display-4 text-center">Meet the Team!</h1>
             </div>
         </div>
     </div>
     <div class="container">
         <div class="row">
-            <div class="team-area col-12 d-flex justify-content-center">
+            <div class="team-area col-12 d-flex justify-content-center card-deck">
                 ${generateTeam(team)}
             </div>
         </div>
